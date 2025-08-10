@@ -15,8 +15,7 @@ Features of this app
  10. Responsive across all devices
 ## Screenshots
 
-<img src="https://github.com/deepakkumar9470/React-Form-Builder/blob/main/public/images/Form_Builder_1.png
-" alt="home page">
+<img src="https://github.com/deepakkumar9470/React-Form-Builder/blob/main/public/images/Form_Builder_1.png" alt="home page">
 
 <img src="https://github.com/deepakkumar9470/React-Form-Builder/blob/main/public/images/Form_Builder_2.png" alt="form create page">
 
