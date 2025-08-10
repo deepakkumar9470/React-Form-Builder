@@ -14,6 +14,12 @@ export interface ValidationRule {
   message?: string;
 }
 
+export interface Field {
+  id: number;
+  label: string;
+  type: string;
+}
+
 export interface Option {
   id: string;
   label: string;

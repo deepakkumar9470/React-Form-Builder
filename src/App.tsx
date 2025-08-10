@@ -1,57 +1,37 @@
-import { Outlet, Link } from "react-router";
-import { AppBar, Toolbar, Button, CssBaseline, ThemeProvider, createTheme, Box } from "@mui/material";
-
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: {
-      main: "#1976d2",
-    },
-    secondary: {
-      main: "#90caf9",
-    },
-    background: {
-      default: "#121212",
-      paper: "#1e1e1e",
-    },
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: "none",
-          fontWeight: 500,
-          borderRadius: "8px",
-          padding: "6px 16px",
-          "&:hover": {
-            backgroundColor: "rgba(255, 255, 255, 0.1)",
-          },
-        },
-      },
-    },
-  },
-});
+import { Suspense, lazy } from "react";
+import { Outlet, useLocation } from "react-router";
+import { CssBaseline, ThemeProvider, Box } from "@mui/material";
+// https://github.com/deepakkumar9470/React-Form-Builder
+import darkTheme from "./theme/darkTheme";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Loading from "./components/Loading";
 
 export default function App() {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <AppBar position="static" elevation={1}>
-        <Toolbar sx={{ gap: 2 }}>
-          <Button color="inherit" component={Link} to="/myforms">
-            My Forms
-          </Button>
-          <Button color="inherit" component={Link} to="/create">
-            Create
-          </Button>
-          <Button color="inherit" component={Link} to="/preview">
-            Preview
-          </Button>
-        </Toolbar>
-      </AppBar>
+      <Suspense fallback={<Loading message="Loading navigation..." />}>
+        <Navbar />
+      </Suspense>
 
-      <Box sx={{ p: 3 }}>
-        <Outlet />
+      {isHomePage && (
+        <Suspense fallback={<Loading message="Loading home page..." />}>
+          <Home />
+        </Suspense>
+      )}
+      <Box
+        sx={{
+          p: 3,
+          minHeight: "calc(100vh - 64px)",
+          background: "transparent",
+        }}
+      >
+        <Suspense fallback={<Loading message="Loading form content..." />}>
+          <Outlet />
+        </Suspense>
       </Box>
     </ThemeProvider>
   );

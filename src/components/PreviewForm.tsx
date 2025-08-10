@@ -7,13 +7,18 @@ import {
   Radio,
   MenuItem,
   Select,
+  CircularProgress,
+  Box,
 } from "@mui/material";
+import Loading from "./Loading";
 
 const PreviewForm = () => {
   const { state: form } = useLocation();
 
   if (!form) {
-    return <Typography>No form data found.</Typography>;
+    return (
+      <Loading message="Loading Preview forms..."/>
+    );
   }
 
   return (

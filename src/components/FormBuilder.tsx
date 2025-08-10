@@ -14,12 +14,7 @@ import {
 } from "@mui/material";
 import { FaPlus, FaSave, FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router";
-
-interface Field {
-  id: number;
-  label: string;
-  type: string;
-}
+import type { Field } from "../types/types";
 
 export default function FormBuilder() {
   const [formName, setFormName] = useState("");
