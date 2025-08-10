@@ -1,7 +1,6 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { Outlet, useLocation } from "react-router";
 import { CssBaseline, ThemeProvider, Box } from "@mui/material";
-// https://github.com/deepakkumar9470/React-Form-Builder
 import darkTheme from "./theme/darkTheme";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
